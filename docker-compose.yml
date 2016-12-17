@@ -1,7 +1,12 @@
-Squid:
-  image: sameersbn/squid:3.3.8-14
-  ports:
-    - "3128:3128"
-  volumes:
-    - /srv/docker/squid/cache:/var/spool/squid3
-  restart: always
+version: '2'
+services:
+  squid:
+    image: jim3ma/squid:3.5.20-https
+    ports:
+      - "3128:3128"
+      - "3443:443"
+    volumes:
+      - /srv/docker/squid/cache:/var/spool/squid3
+      - ./squid.cert:/etc/certs/squid.cert
+      - ./squid.key:/etc/certs/squid.key
+    restart: always

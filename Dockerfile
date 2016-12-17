@@ -1,7 +1,6 @@
-FROM alpine:3.3
-MAINTAINER sameer@damagehead.com
+FROM alpine:3.4
 
-ENV SQUID_VERSION=3.5.15-r1 \
+ENV SQUID_VERSION=3.5.20-r0 \
     SQUID_CACHE_DIR=/var/spool/squid3 \
     SQUID_LOG_DIR=/var/log/squid \
     SQUID_USER=squid
@@ -13,6 +12,10 @@ COPY squid.conf /etc/squid/squid.conf
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
+# HTTP Proxy
 EXPOSE 3128/tcp
+# HTTPS Proxy
+EXPOSE 443/tcp
+
 VOLUME ["${SQUID_CACHE_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
