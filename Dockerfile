@@ -1,7 +1,7 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER sameer@damagehead.com
 
-ENV SQUID_VERSION=3.5.15-r1 \
+ENV SQUID_VERSION=3.5.20-r0 \
     SQUID_CACHE_DIR=/var/spool/squid3 \
     SQUID_LOG_DIR=/var/log/squid \
     SQUID_USER=squid
